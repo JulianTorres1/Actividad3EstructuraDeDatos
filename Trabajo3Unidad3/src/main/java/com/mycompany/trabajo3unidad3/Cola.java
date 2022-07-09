@@ -1,5 +1,7 @@
 package com.mycompany.trabajo3unidad3;
 
+import javax.swing.*;
+
 public class Cola {
 
     private Nodo NodoInicial, Nodofinal;
@@ -66,7 +68,9 @@ public class Cola {
         for (int i = cadena.length - 1; i < 0; i++) {
             ColaInvertida += " " + cadena[i];
         }
+        System.out.printf("Contenido: "+ColaInvertida);
         System.out.println(ColaInvertida);
+        JOptionPane.showMessageDialog(null, ColaInvertida);
     }
 
 }
