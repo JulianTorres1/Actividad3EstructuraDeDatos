@@ -48,15 +48,20 @@ public class Trabajo3Unidad3 {
             }
 
             if (opcion == 2) {
-                System.out.println("Incertar");
+                int numeroIncertar;
+                System.out.println("Ingrese el Numero a Incertar en la cola: ");
+                numeroIncertar = sc.nextInt();
+                cola.IncertaCola(numeroIncertar);
             }
 
             if (opcion == 3) {
-                System.out.println("Extraer");
+                System.out.println("Eliminando el elemento correspondiente ... ");
+                cola.ExtraerCola();
             }
 
             if (opcion == 4) {
-                System.out.println("Mostrar");
+                System.out.println("Mostrando ... ");
+                cola.MostrarCola();
             }
             if (opcion == 5) {
                 System.out.println("Saliendo ...");

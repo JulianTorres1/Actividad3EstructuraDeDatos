@@ -66,7 +66,6 @@ public class Cola {
         for (int i = cadena.length - 1; i < 0; i++) {
             ColaInvertida += " " + cadena[i];
         }
-
         System.out.println(ColaInvertida);
     }
 
