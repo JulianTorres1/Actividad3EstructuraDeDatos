@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Cola {
 
     private Nodo NodoInicial, Nodofinal;
-    String InfoCola = "";
+    String InfoCola = " ";
 
     public Cola(){
         NodoInicial = null;
@@ -65,11 +65,11 @@ public class Cola {
 
         String cadena [] = InfoCola.split("  ");
 
-        for (int i = cadena.length - 1; i < 0; i++) {
+        for (int i = cadena.length - 1; i != 0; i++) {
             ColaInvertida += " " + cadena[i];
+            System.out.println(i);
         }
         System.out.printf("Contenido: "+ColaInvertida);
-        System.out.println(ColaInvertida);
         JOptionPane.showMessageDialog(null, ColaInvertida);
     }
 
