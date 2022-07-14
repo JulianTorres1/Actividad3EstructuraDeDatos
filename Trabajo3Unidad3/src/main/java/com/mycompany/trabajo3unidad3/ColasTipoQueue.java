@@ -1,6 +1,7 @@
 package com.mycompany.trabajo3unidad3;
 
 import javax.swing.plaf.synth.SynthTreeUI;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -41,7 +42,7 @@ public class ColasTipoQueue {
                         9. Eliminar un elemento cualquiera de la cola.
                         10. agregar una subCola dentro de la cola existente  //
                         11. Eliminar varios elementos consecutivos de la cola //
-                        12. Borrar todos los elementos de la cola. //
+                        12. Borrar todos los elementos de la cola.
                         13. Salir
                     """);
 
@@ -115,7 +116,16 @@ public class ColasTipoQueue {
             }else if (opcion == 11){
                 System.out.println("eliminacion consegutiva");
             }else if (opcion == 12){
-                System.out.println("Borrar Todo");
+                System.out.println("Borrando ....");
+                Iterator<String> itr = cola.iterator();
+
+                while (itr.hasNext())
+                {
+                    cola.remove();
+                    System.out.println("Borrando");
+                }
+                System.out.println("Todos los elementos han sido eliminados!, elementos: " + cola.size());
+                System.out.println(cola);
             }else if (opcion == 13){
                 System.out.println("Saliendo ...");
                 break;
@@ -123,8 +133,3 @@ public class ColasTipoQueue {
         }
     }
 }
-
-
-//for (int i = 0; i < cola.size(); i++) {
-//        System.out.println("Element at index "+i+" is: "+ ((LinkedList<String>) cola).get(i));
-//        }
