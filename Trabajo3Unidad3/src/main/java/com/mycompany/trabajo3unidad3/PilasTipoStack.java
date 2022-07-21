@@ -44,6 +44,8 @@ public class PilasTipoStack {
                     9. incertar una elemento en la Pila.
                     10. eliminar varios elementos consecutivos.
                     11. Obtener la posicion de un elemento en la Pila.
+                    12. buscar elementos en base a su indice.
+                    13. vaciar toda la pila.
                 """);
 
             opcion = sc.nextInt();
@@ -74,7 +76,7 @@ public class PilasTipoStack {
                     System.out.println("Pila esta vacia");
                 }
             } else if (opcion == 6) {
-                if (pila.isEmpty()  == false) {
+                if (!pila.isEmpty()) {
                     System.out.println("Eliminado Primer elemento: " + pila.get(0));
                     pila.remove(0);
                     System.out.println("Estado de la pila: " + pila);
@@ -119,6 +121,8 @@ public class PilasTipoStack {
                     System.out.println("no Se pudo agregar " + e);
                 }
             } else if (opcion == 9) {
+
+
 
             }else if (opcion == 10) {
                 System.out.println("""
@@ -167,9 +171,9 @@ public class PilasTipoStack {
                     System.out.println(Arrays.toString(elementos));
 
                     try {
-                        for (int i = 0; i < elementos.length; i++) {
-                            if (pila.contains(elementos[i])) {
-                                pila.remove(elementos[i]);
+                        for (String elemento : elementos) {
+                            if (pila.contains(elemento)) {
+                                pila.remove(elemento);
                             }
                         }
                     }catch (Exception e) {
@@ -178,12 +182,41 @@ public class PilasTipoStack {
                     System.out.println("elementos: " + Arrays.toString(elementos) + " eliminados correctamente.");
                 }
 
+        } else if (opcion == 11) {
+                boolean found = false;
+                System.out.println("ingrese el contenido del elemento a buscar su posicion: ");
+                String busquedaE = sc.next();
+                for (int i = 0; i < pila.size(); i++) {
+                    if (pila.get(i).equals(busquedaE)) {
+                        System.out.println("el elemento " + busquedaE + " se encontro ne la posicion " + i);
+                        found = true;
+                    }else if (!found) {
+                        System.out.println("No se encontro el elemento " + busquedaE);
+                    }
+
+                }
+            }else if (opcion == 12){
+                System.out.println("Ingrese el Indice del elemento a buscar:");
+                int index = sc.nextInt();
+
+                try {
+                    System.out.println("Elemento en el indice " + index + " es: " + pila.elementAt(index));
+                }catch (Exception e) {
+                    System.out.println(Arrays.toString(new String[]{"No se encontro el elemento en el indice: error: " + e.getMessage()}));
+                }
+
+            }else if (opcion == 13){
+                int tamagno = pila.size();
+                for (int i = 0; i < tamagno; i++) {
+                    pila.remove(0);
+                }
+                System.out.println(pila);
+            } else if (opcion == 14) {
+                System.out.println("Saliendo ...");
+                break;
+            }
+
         }
-
-
-        }
-        
-
 
     }
 }

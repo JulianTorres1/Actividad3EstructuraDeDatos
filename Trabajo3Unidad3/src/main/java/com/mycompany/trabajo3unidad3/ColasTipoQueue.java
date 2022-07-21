@@ -40,8 +40,8 @@ public class ColasTipoQueue {
                         7. Obtener posicion de un elemento.
                         8. Obtener la posicion X de un elemento.
                         9. Eliminar un elemento cualquiera de la cola.
-                        10. agregar una subCola dentro de la cola existente  //
-                        11. Eliminar varios elementos consecutivos de la cola //
+                        10. agregar una subCola dentro de la cola existente.
+                        11. Eliminar varios elementos consecutivos de la cola.
                         12. Borrar todos los elementos de la cola.
                         13. Salir
                     """);
@@ -114,7 +114,35 @@ public class ColasTipoQueue {
                 System.out.println("Resultado: " + cola);
 
             }else if (opcion == 11){
-                System.out.println("eliminacion consegutiva");
+                System.out.println("""
+                        Seleccione una opcion:
+                            1. eliminar los siguientes elementos en la cola.
+                            2. eliminar por contenido.
+                        """);
+                int opcionEliminar = sc.nextInt();
+
+                if (opcionEliminar == 1){
+                    System.out.println("Ingrese el nuemro de elementos que desea eliminar: ");
+                    int cuantosEliminar = sc.nextInt();
+                    for (int i = 0; i < cuantosEliminar; i++) {
+                        cola.remove();
+                    }
+                    System.out.println("Elementos eliminados!, Cola: " + cola );
+                } else if (opcionEliminar == 2) {
+                    System.out.println("Cuantos elementos eliminara? ");
+                    int cuantosIndex = sc.nextInt();
+                    for (int i = 0; i < cuantosIndex; i++) {
+                        System.out.println("ingrese el contenido del elemento " + i +" a eliminar: ");
+                        String deleteElemento = sc.next();
+                        try {
+                            cola.remove(deleteElemento);
+                        }catch (Exception e) {
+                            System.out.println("No se encontro el elemento a eliminar: " + deleteElemento + "\n" + e.getMessage());
+                        }
+                    }
+                    System.out.println("Elementos eliminados, Cola: " + cola);
+                }
+
             }else if (opcion == 12){
                 System.out.println("Borrando ....");
                 Iterator<String> itr = cola.iterator();
