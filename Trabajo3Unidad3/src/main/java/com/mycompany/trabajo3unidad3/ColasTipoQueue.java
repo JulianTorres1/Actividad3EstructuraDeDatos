@@ -1,6 +1,7 @@
 package com.mycompany.trabajo3unidad3;
 
 import javax.swing.plaf.synth.SynthTreeUI;
+import java.text.NumberFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,8 +13,8 @@ public class ColasTipoQueue {
     public static void main(String[] args) {
 
         // Primero Creamos nuestro objeto cola que a su ves es una cola tipo Queue
-        Queue<String> cola = new LinkedList<String>();
-
+        Queue<String> cola = new LinkedList<>();
+        Queue<String> colaAux = new LinkedList<>();
         Scanner sc = new Scanner(System.in);
 
         int enable = 1;
@@ -27,12 +28,11 @@ public class ColasTipoQueue {
 
         System.out.println("Elementos PreCargados: " + cola);
 
-
         while (enable == 1){
             System.out.println("""
                     Que Desea Realizar:
                         1. Ver los elementos de la cola.
-                        2. incertar un elemento en la cola.
+                        2. agregar un elemento en la cola.
                         3. eliminar el ultimo elemento en la cola
                         4. saber cuantos elementos hay dentro de la cola.
                         5. verificar si la cola esta vacia.
@@ -43,7 +43,8 @@ public class ColasTipoQueue {
                         10. agregar una subCola dentro de la cola existente.
                         11. Eliminar varios elementos consecutivos de la cola.
                         12. Borrar todos los elementos de la cola.
-                        13. Salir
+                        13. Incertar un elemento en cualquier parte de la cola.
+                        14. Salir
                     """);
 
             opcion = sc.nextInt();
@@ -155,6 +156,49 @@ public class ColasTipoQueue {
                 System.out.println("Todos los elementos han sido eliminados!, elementos: " + cola.size());
                 System.out.println(cola);
             }else if (opcion == 13){
+                System.out.println("ingrese la ubicacion donde quiere guardar el elemento");
+                int ubicacion = sc.nextInt();
+                try {
+                    for (int i = 0; i < ubicacion; i++) {
+                        colaAux.add(((LinkedList<String>) cola).get(i));
+                    }
+                }catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+                System.out.println("Ingrese el contenido del elemento a ingresar: ");
+                String element = sc.next();
+                colaAux.add(element);
+
+                for (int i = 0; i < ubicacion; i++) {
+                    cola.remove();
+                }
+
+                try {
+                    for (int i = 0; i < cola.size(); i++) {
+                        colaAux.add(((LinkedList<String>) cola).get(i));
+                    }
+                }catch (Exception e) {
+                    System.out.println("Error al ingresar el resto de la cola: " + e.getMessage());
+                }
+
+                Iterator<String> itr = cola.iterator();
+                while (itr.hasNext())
+                {
+                    cola.remove();
+                }
+
+                cola = colaAux;
+
+                Iterator<String> itrAux = colaAux.iterator();
+                while (itr.hasNext())
+                {
+                    colaAux.remove();
+                }
+
+                System.out.println("cola: " + cola);
+                System.out.println("cola Auxiliar: " + colaAux);
+
+            }else if (opcion == 14){
                 System.out.println("Saliendo ...");
                 break;
             }

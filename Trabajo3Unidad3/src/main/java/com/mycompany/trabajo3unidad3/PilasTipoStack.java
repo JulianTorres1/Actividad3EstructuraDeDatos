@@ -26,7 +26,6 @@ public class PilasTipoStack {
         pila.push("jonny");
         System.out.println("Elementos Pre-Cargados: " + pila.peek());
 
-
         while (on){
 
             System.out.println(pila);
